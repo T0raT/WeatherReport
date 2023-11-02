@@ -13,6 +13,15 @@ window.onload = function () {
     // Save the entered API key to localStorage
     localStorage.setItem("weatherApiKey", apiKey);
   }
+
+  let city = localStorage.getItem("weatherCity");
+  if (!city) {
+    city = "Boston";
+    localStorage.setItem("weatherCity", city);
+    checkWeather(city);
+  } else {
+    checkWeather(city);
+  }
 };
 
 const api = localStorage.getItem("weatherApiKey");
@@ -35,17 +44,6 @@ async function checkWeather(city) {
   document.querySelector(".humidity").textContent =
     weatherData.main.humidity + "%";
 }
-
-window.onload = function () {
-  let city = localStorage.getItem("weatherCity");
-  if (!city) {
-    city = "Boston";
-    localStorage.setItem("weatherCity", city);
-    checkWeather(city);
-  } else {
-    checkWeather(city);
-  }
-};
 
 searchbttn.addEventListener("click", () => {
   localStorage.setItem("weatherCity", search.value);
