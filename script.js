@@ -48,5 +48,6 @@ window.onload = function () {
 };
 
 searchbttn.addEventListener("click", () => {
+  localStorage.setItem("weatherCity", search.value);
   checkWeather(search.value);
 });
